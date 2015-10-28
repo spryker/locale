@@ -5,7 +5,7 @@
 
 namespace SprykerEngine\Zed\Locale\Persistence\Propel;
 
-use SprykerEngine\Zed\Locale\Persistence\Propel\Base\SpyLocaleQuery as BaseSpyLocaleQuery;
+use Orm\Zed\Locale\Persistence\Base\SpyLocaleQuery as BaseSpyLocaleQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_locale' table.
@@ -17,7 +17,7 @@ use SprykerEngine\Zed\Locale\Persistence\Propel\Base\SpyLocaleQuery as BaseSpyLo
  * long as it does not already exist in the output directory.
  *
  */
-class SpyLocaleQuery extends BaseSpyLocaleQuery
+abstract class AbstractSpyLocaleQuery extends BaseSpyLocaleQuery
 {
 
 } // SpyLocaleQuery

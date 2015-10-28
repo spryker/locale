@@ -5,7 +5,7 @@
 
 namespace SprykerEngine\Zed\Locale\Persistence\Propel;
 
-use SprykerEngine\Zed\Locale\Persistence\Propel\Base\SpyLocale as BaseSpyLocale;
+use Orm\Zed\Locale\Persistence\Base\SpyLocale as BaseSpyLocale;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_locale' table.
@@ -17,7 +17,7 @@ use SprykerEngine\Zed\Locale\Persistence\Propel\Base\SpyLocale as BaseSpyLocale;
  * long as it does not already exist in the output directory.
  *
  */
-class SpyLocale extends BaseSpyLocale
+abstract class AbstractSpyLocale extends BaseSpyLocale
 {
 
 }
