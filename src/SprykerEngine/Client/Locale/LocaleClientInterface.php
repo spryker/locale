@@ -4,7 +4,7 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerEngine\Client\Locale\Service;
+namespace SprykerEngine\Client\Locale;
 
 interface LocaleClientInterface
 {

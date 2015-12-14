@@ -4,9 +4,9 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerEngine\Client\Locale\Service;
+namespace SprykerEngine\Client\Locale;
 
-use SprykerEngine\Client\Kernel\Service\AbstractClient;
+use SprykerEngine\Client\Kernel\AbstractClient;
 use SprykerEngine\Shared\Kernel\Store;
 
 /**
