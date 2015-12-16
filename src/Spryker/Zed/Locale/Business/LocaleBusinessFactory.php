@@ -16,7 +16,7 @@ use Spryker\Zed\Locale\Persistence\LocaleQueryContainerInterface;
 /**
  * @method LocaleConfig getConfig()
  */
-class LocaleDependencyContainer extends AbstractBusinessFactory
+class LocaleBusinessFactory extends AbstractBusinessFactory
 {
 
     /**

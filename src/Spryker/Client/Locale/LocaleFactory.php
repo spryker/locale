@@ -8,6 +8,6 @@ namespace Spryker\Client\Locale;
 
 use Spryker\Client\Kernel\AbstractFactory;
 
-class LocaleDependencyContainer extends AbstractFactory
+class LocaleFactory extends AbstractFactory
 {
 }
