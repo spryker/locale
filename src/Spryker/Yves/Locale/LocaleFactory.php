@@ -5,18 +5,13 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Locale\Communication;
+namespace Spryker\Yves\Locale;
 
+use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\LocaleExtension\Dependency\Plugin\LocalePluginInterface;
-use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
-use Spryker\Zed\Locale\LocaleDependencyProvider;
+use Spryker\Yves\Kernel\AbstractFactory;
 
-/**
- * @method \Spryker\Zed\Locale\LocaleConfig getConfig()
- * @method \Spryker\Zed\Locale\Persistence\LocaleQueryContainerInterface getQueryContainer()
- * @method \Spryker\Zed\Locale\Business\LocaleFacadeInterface getFacade()
- */
-class LocaleCommunicationFactory extends AbstractCommunicationFactory
+class LocaleFactory extends AbstractFactory
 {
     /**
      * @return \Spryker\Shared\LocaleExtension\Dependency\Plugin\LocalePluginInterface
@@ -24,5 +19,13 @@ class LocaleCommunicationFactory extends AbstractCommunicationFactory
     public function getLocalePlugin(): LocalePluginInterface
     {
         return $this->getProvidedDependency(LocaleDependencyProvider::PLUGIN_LOCALE);
+    }
+
+    /**
+     * @return \Spryker\Shared\Kernel\Store
+     */
+    public function getStore(): Store
+    {
+        return $this->getProvidedDependency(LocaleDependencyProvider::STORE);
     }
 }
