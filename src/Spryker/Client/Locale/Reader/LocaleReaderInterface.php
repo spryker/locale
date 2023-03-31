@@ -5,14 +5,12 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\Locale;
+namespace Spryker\Client\Locale\Reader;
 
-interface LanguageReaderInterface
+interface LocaleReaderInterface
 {
     /**
-     * @param string $localeCode
-     *
-     * @return string
+     * @return array<string, string>
      */
-    public function getLanguageByLocaleCode(string $localeCode): string;
+    public function getLocaleList(): array;
 }
