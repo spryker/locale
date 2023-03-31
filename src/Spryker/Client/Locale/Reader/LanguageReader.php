@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\Locale;
+namespace Spryker\Client\Locale\Reader;
 
 use LogicException;
 
@@ -27,5 +27,15 @@ class LanguageReader implements LanguageReaderInterface
         }
 
         return substr($localeCode, 0, $delimiterPosition);
+    }
+
+    /**
+     * @param array<string, string> $localeList
+     *
+     * @return array<string>
+     */
+    public function getAllowedLanguagesByLocaleList(array $localeList): array
+    {
+        return array_keys($localeList);
     }
 }
