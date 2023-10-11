@@ -7,7 +7,7 @@
 
 namespace Spryker\Service\Locale;
 
-use Negotiation\AcceptLanguage;
+use Generated\Shared\Transfer\AcceptLanguageTransfer;
 use Spryker\Service\Kernel\AbstractService;
 
 /**
@@ -24,12 +24,12 @@ class LocaleService extends AbstractService implements LocaleServiceInterface
      * @param array<int, string> $priorities
      * @param bool $strict
      *
-     * @return \Negotiation\AcceptLanguage|null
+     * @return \Generated\Shared\Transfer\AcceptLanguageTransfer|null
      */
-    public function getAcceptLanguage(string $acceptLanguageHeader, array $priorities, bool $strict = false): ?AcceptLanguage
+    public function getAcceptLanguage(string $acceptLanguageHeader, array $priorities, bool $strict = false): ?AcceptLanguageTransfer
     {
         return $this->getFactory()
-            ->getLanguageNegotiator()
+            ->createAcceptLanguageNegotiator()
             ->getAcceptLanguage($acceptLanguageHeader, $priorities, $strict);
     }
 }

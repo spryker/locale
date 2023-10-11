@@ -9,9 +9,32 @@ namespace Spryker\Service\Locale;
 
 use Spryker\Service\Kernel\AbstractServiceFactory;
 use Spryker\Service\Locale\Dependency\External\LocaleToLanguageNegotiatorInterface;
+use Spryker\Service\Locale\Mapper\AcceptLanguageMapper;
+use Spryker\Service\Locale\Mapper\AcceptLanguageMapperInterface;
+use Spryker\Service\Locale\Negotiator\AcceptLanguageNegotiator;
+use Spryker\Service\Locale\Negotiator\AcceptLanguageNegotiatorInterface;
 
 class LocaleServiceFactory extends AbstractServiceFactory
 {
+    /**
+     * @return \Spryker\Service\Locale\Negotiator\AcceptLanguageNegotiatorInterface
+     */
+    public function createAcceptLanguageNegotiator(): AcceptLanguageNegotiatorInterface
+    {
+        return new AcceptLanguageNegotiator(
+            $this->getLanguageNegotiator(),
+            $this->createAcceptLanguageMapper(),
+        );
+    }
+
+    /**
+     * @return \Spryker\Service\Locale\Mapper\AcceptLanguageMapperInterface
+     */
+    public function createAcceptLanguageMapper(): AcceptLanguageMapperInterface
+    {
+        return new AcceptLanguageMapper();
+    }
+
     /**
      * @return \Spryker\Service\Locale\Dependency\External\LocaleToLanguageNegotiatorInterface
      */
