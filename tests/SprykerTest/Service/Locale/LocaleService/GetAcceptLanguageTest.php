@@ -50,18 +50,20 @@ class GetAcceptLanguageTest extends Unit
     public function testShouldReturnExpectedAcceptLanguageType(string $acceptLanguageHeader, array $priorities, ?string $expected): void
     {
         // Act
-        $acceptLanguage = $this->localeService->getAcceptLanguage($acceptLanguageHeader, $priorities);
+        $acceptedLanguageTransfer = $this->localeService->getAcceptLanguage($acceptLanguageHeader, $priorities);
 
         // Assert
-        if (!$acceptLanguage) {
-            $this->assertNull($acceptLanguage);
-        } else {
-            $this->assertSame($expected, $acceptLanguage->getType());
+        if (!$acceptedLanguageTransfer) {
+            $this->assertNull($acceptedLanguageTransfer);
+
+            return;
         }
+
+        $this->assertSame($expected, $acceptedLanguageTransfer->getType());
     }
 
     /**
-     * @return list<array>
+     * @return list<array<string, list<string>, string|null>>
      */
     protected function getAcceptLanguageDataProvider(): array
     {
