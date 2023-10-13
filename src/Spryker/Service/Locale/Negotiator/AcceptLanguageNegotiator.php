@@ -14,12 +14,22 @@ use Spryker\Service\Locale\Mapper\AcceptLanguageMapperInterface;
 class AcceptLanguageNegotiator implements AcceptLanguageNegotiatorInterface
 {
     /**
+     * @var \Spryker\Service\Locale\Dependency\External\LocaleToLanguageNegotiatorInterface
+     */
+    protected LocaleToLanguageNegotiatorInterface $languageNegotiator;
+
+    /**
+     * @var \Spryker\Service\Locale\Mapper\AcceptLanguageMapperInterface
+     */
+    protected AcceptLanguageMapperInterface $acceptLanguageMapper;
+
+    /**
      * @param \Spryker\Service\Locale\Dependency\External\LocaleToLanguageNegotiatorInterface $languageNegotiator
      * @param \Spryker\Service\Locale\Mapper\AcceptLanguageMapperInterface $acceptLanguageMapper
      */
     public function __construct(
-        protected LocaleToLanguageNegotiatorInterface $languageNegotiator,
-        protected AcceptLanguageMapperInterface $acceptLanguageMapper
+        LocaleToLanguageNegotiatorInterface $languageNegotiator,
+        AcceptLanguageMapperInterface $acceptLanguageMapper
     ) {
         $this->languageNegotiator = $languageNegotiator;
         $this->acceptLanguageMapper = $acceptLanguageMapper;
