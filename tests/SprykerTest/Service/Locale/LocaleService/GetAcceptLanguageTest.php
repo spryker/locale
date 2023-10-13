@@ -42,7 +42,7 @@ class GetAcceptLanguageTest extends Unit
      * @dataProvider getAcceptLanguageDataProvider
      *
      * @param string $acceptLanguageHeader
-     * @param <int, string> $priorities
+     * @param list<string> $priorities
      * @param string|null $expected
      *
      * @return void
@@ -50,16 +50,16 @@ class GetAcceptLanguageTest extends Unit
     public function testShouldReturnExpectedAcceptLanguageType(string $acceptLanguageHeader, array $priorities, ?string $expected): void
     {
         // Act
-        $acceptedLanguageTransfer = $this->localeService->getAcceptLanguage($acceptLanguageHeader, $priorities);
+        $acceptLanguageTransfer = $this->localeService->getAcceptLanguage($acceptLanguageHeader, $priorities);
 
         // Assert
-        if (!$acceptedLanguageTransfer) {
-            $this->assertNull($acceptedLanguageTransfer);
+        if (!$acceptLanguageTransfer) {
+            $this->assertNull($acceptLanguageTransfer);
 
             return;
         }
 
-        $this->assertSame($expected, $acceptedLanguageTransfer->getType());
+        $this->assertSame($expected, $acceptLanguageTransfer->getType());
     }
 
     /**
