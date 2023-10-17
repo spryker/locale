@@ -5,13 +5,17 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\Locale;
+declare(strict_types=1);
+
+namespace SprykerTest\Glue\Locale;
 
 use Codeception\Actor;
 
 /**
- * @method void wantToTest($text)
+ * Inherited Methods
+ *
  * @method void wantTo($text)
+ * @method void wantToTest($text)
  * @method void execute($callable)
  * @method void expectTo($prediction)
  * @method void expect($prediction)
@@ -19,19 +23,11 @@ use Codeception\Actor;
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
+ * @method void pause($vars = [])
  *
- * @SuppressWarnings(\SprykerTest\Zed\Locale\PHPMD)
+ * @SuppressWarnings(\SprykerTest\Glue\Locale\PHPMD)
  */
-class LocaleBusinessTester extends Actor
+class LocaleGlueTester extends Actor
 {
-    use _generated\LocaleBusinessTesterActions;
-
-    /**
-     * @return bool
-     */
-    public function isDynamicStoreEnabled(): bool
-    {
-        return (bool)getenv('DYNAMIC_STORE_MODE');
-    }
+    use _generated\LocaleGlueTesterActions;
 }
