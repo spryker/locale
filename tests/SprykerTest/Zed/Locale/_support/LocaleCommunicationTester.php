@@ -5,13 +5,17 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Yves\Locale;
+declare(strict_types=1);
+
+namespace SprykerTest\Zed\Locale;
 
 use Codeception\Actor;
 
 /**
- * @method void wantToTest($text)
+ * Inherited Methods
+ *
  * @method void wantTo($text)
+ * @method void wantToTest($text)
  * @method void execute($callable)
  * @method void expectTo($prediction)
  * @method void expect($prediction)
@@ -19,13 +23,13 @@ use Codeception\Actor;
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method void pause()
+ * @method void pause($vars = [])
  *
- * @SuppressWarnings(\SprykerTest\Yves\Locale\PHPMD)
+ * @SuppressWarnings(\SprykerTest\Zed\Locale\PHPMD)
  */
-class LocaleBusinessTester extends Actor
+class LocaleCommunicationTester extends Actor
 {
-    use _generated\LocaleBusinessTesterActions;
+    use _generated\LocaleCommunicationTesterActions;
 
     /**
      * @var string
@@ -35,30 +39,10 @@ class LocaleBusinessTester extends Actor
     /**
      * @var string
      */
+    public const LOCALE = 'de_DE';
+
+    /**
+     * @var string
+     */
     public const BC_FEATURE_FLAG_LOCALE_LISTENER = 'BC_FEATURE_FLAG_LOCALE_LISTENER';
-
-    /**
-     * @var string
-     */
-    public const LOCALE = 'en_US';
-
-    /**
-     * @var string
-     */
-    public const LOCALE_DE = 'de_DE';
-
-    /**
-     * @var string
-     */
-    public const SERVICE_STORE = 'store';
-
-    /**
-     * @var string
-     */
-    public const DEFAULT_STORE = 'DE';
-
-    /**
-     * @var string
-     */
-    public const CURRENCY_EUR = 'EUR';
 }
