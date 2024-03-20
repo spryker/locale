@@ -12,8 +12,10 @@ use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Client\Locale\LocaleClient;
 use Spryker\Client\Locale\LocaleClientInterface;
 use Spryker\Client\Locale\LocaleDependencyProvider;
+use Spryker\Shared\Kernel\Container\ContainerProxy;
 use Spryker\Yves\Locale\Dependency\Client\LocaleToStoreClientInterface;
 use Spryker\Yves\Locale\Plugin\Locale\LocaleLocalePlugin;
+use SprykerTest\Yves\Locale\LocaleBusinessTester;
 
 /**
  * Auto-generated group annotations
@@ -21,40 +23,40 @@ use Spryker\Yves\Locale\Plugin\Locale\LocaleLocalePlugin;
  * @group SprykerTest
  * @group Yves
  * @group Plugin
- * @group LocaleLocalePluginTest
+ * @group LocaleLocalePluginDynamicStoreTest
  * Add your own group annotations below this line
  */
-class LocaleLocalePluginTest extends Unit
+class LocaleLocalePluginDynamicStoreTest extends Unit
 {
     /**
      * @var \Spryker\Yves\Locale\Plugin\Locale\LocaleLocalePlugin
      */
-    protected $localeLocalePlugin;
+    protected LocaleLocalePlugin $localeLocalePlugin;
 
     /**
      * @var string
      */
-    protected $defaultLocaleName;
+    protected string $defaultLocaleName;
 
     /**
      * @var string
      */
-    protected $notDefaultLocaleName;
+    protected string $notDefaultLocaleName;
 
     /**
      * @var string
      */
-    protected $notDefaultLocaleIsoCode;
+    protected string $notDefaultLocaleIsoCode;
 
     /**
-     * @var \Spryker\Yves\Kernel\Container
+     * @var \Spryker\Shared\Kernel\Container\ContainerProxy
      */
-    protected $container;
+    protected ContainerProxy $container;
 
     /**
      * @var \SprykerTest\Yves\Locale\LocaleBusinessTester
      */
-    protected $tester;
+    protected LocaleBusinessTester $tester;
 
     /**
      * @return void
@@ -68,6 +70,10 @@ class LocaleLocalePluginTest extends Unit
         $this->localeLocalePlugin = new LocaleLocalePlugin();
 
         $localeToStoreClientMock = $this->createLocaleToStoreClientMock();
+        $localeToStoreClientMock->method('isDynamicStoreEnabled')->willReturn(true);
+        $localeToStoreClientMock->method('getStoreByName')->willReturn(
+            (new StoreTransfer())->setDefaultLocaleIsoCode($this->tester::LOCALE),
+        );
         $mockedFactory = $this->tester->mockFactoryMethod('getStoreClient', $localeToStoreClientMock);
         $this->localeLocalePlugin->setFactory($mockedFactory);
 
