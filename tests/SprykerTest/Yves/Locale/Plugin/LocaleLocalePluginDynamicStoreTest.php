@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Yves\Plugin;
+namespace SprykerTest\Yves\Locale\Plugin;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\StoreTransfer;
@@ -23,6 +23,7 @@ use SprykerTest\Yves\Locale\LocaleBusinessTester;
  *
  * @group SprykerTest
  * @group Yves
+ * @group Locale
  * @group Plugin
  * @group LocaleLocalePluginDynamicStoreTest
  * Add your own group annotations below this line

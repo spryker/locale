@@ -1,0 +1,18 @@
+resource:
+    name: Stores
+    shortName: stores
+    description: Store management API for Backend operations
+
+    properties:
+        defaultLocaleIsoCode:
+            type: string
+            description: The default locale ISO code for the store. Must be in the format of lowercase language code underscore uppercase country code (e.g., en_US, de_DE). This value must be present in the availableLocaleIsoCodes array.
+            writable: true
+            openapiContext:
+                example: de_DE
+
+        availableLocaleIsoCodes:
+            type: array
+            description: List of available locale ISO codes in the format of lowercase language code underscore uppercase country code (e.g., en_US, de_DE).
+            openapiContext:
+                example: ['en_US', 'de_DE']
