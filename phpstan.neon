@@ -1,2 +1,4 @@
 parameters:
     level: 8
+    ignoreErrors:
+        - '#PHPDoc tag @method .+ return type contains unknown class .+LocaleQueryContainerInterface.#'
