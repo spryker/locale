@@ -72,11 +72,6 @@ class LocaleRepository extends AbstractRepository implements LocaleRepositoryInt
         return $this->mapLocaleEntitiesToLocaleTransfers($localeEntites);
     }
 
-    /**
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer|null
-     */
     public function findLocaleTransferByLocaleName(string $localeName): ?LocaleTransfer
     {
         $localeEntity = $this->getFactory()->createLocalePropelQuery()
@@ -92,11 +87,6 @@ class LocaleRepository extends AbstractRepository implements LocaleRepositoryInt
             ->mapLocaleEntityToLocaleTransfer($localeEntity, new LocaleTransfer());
     }
 
-    /**
-     * @param string $localeName
-     *
-     * @return int
-     */
     public function getLocalesCountByLocaleName(string $localeName): int
     {
         return $this->getFactory()
@@ -122,11 +112,6 @@ class LocaleRepository extends AbstractRepository implements LocaleRepositoryInt
             ->mapLocaleEntityToLocaleTransfer($localeEntity, $localeTransfer);
     }
 
-    /**
-     * @param int $idLocale
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer|null
-     */
     public function findLocaleByIdLocale(int $idLocale): ?LocaleTransfer
     {
         $localeEntity = $this->getFactory()->createLocalePropelQuery()
@@ -136,11 +121,6 @@ class LocaleRepository extends AbstractRepository implements LocaleRepositoryInt
         return $this->getMappedLocaleTransfer($localeEntity, new LocaleTransfer());
     }
 
-    /**
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer|null
-     */
     public function findLocaleByLocaleName(string $localeName): ?LocaleTransfer
     {
         $localeEntity = $this->getFactory()->createLocalePropelQuery()

@@ -13,18 +13,8 @@ use Generated\Shared\Transfer\StoreTransfer;
 
 interface LocaleWriterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreResponseTransfer
-     */
     public function createLocaleStore(StoreTransfer $storeTransfer): StoreResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreResponseTransfer
-     */
     public function updateStoreLocales(StoreTransfer $storeTransfer): StoreResponseTransfer;
 
     /**
@@ -36,17 +26,7 @@ interface LocaleWriterInterface
      */
     public function createLocale(string $localeName): LocaleTransfer;
 
-    /**
-     * @param string $localeName
-     *
-     * @return void
-     */
     public function deleteLocale(string $localeName): void;
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreResponseTransfer
-     */
     public function updateStoreDefaultLocale(StoreTransfer $storeTransfer): StoreResponseTransfer;
 }

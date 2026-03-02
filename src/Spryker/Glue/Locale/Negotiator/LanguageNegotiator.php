@@ -29,11 +29,6 @@ class LanguageNegotiator implements LanguageNegotiatorInterface
      */
     protected LocaleToStoreClientInterface $storeClient;
 
-    /**
-     * @param \Spryker\Client\Locale\LocaleClientInterface $localeClient
-     * @param \Spryker\Service\Locale\LocaleServiceInterface $localeService
-     * @param \Spryker\Glue\Locale\Dependency\Client\LocaleToStoreClientInterface $storeClient
-     */
     public function __construct(
         LocaleClientInterface $localeClient,
         LocaleServiceInterface $localeService,

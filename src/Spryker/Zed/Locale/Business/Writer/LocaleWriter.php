@@ -28,10 +28,6 @@ class LocaleWriter implements LocaleWriterInterface
      */
     protected LocaleEntityManagerInterface $localeEntityManager;
 
-    /**
-     * @param \Spryker\Zed\Locale\Business\Reader\LocaleReaderInterface $localeReader
-     * @param \Spryker\Zed\Locale\Persistence\LocaleEntityManagerInterface $localeEntityManager
-     */
     public function __construct(
         LocaleReaderInterface $localeReader,
         LocaleEntityManagerInterface $localeEntityManager
@@ -40,11 +36,6 @@ class LocaleWriter implements LocaleWriterInterface
         $this->localeEntityManager = $localeEntityManager;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreResponseTransfer
-     */
     public function createLocaleStore(StoreTransfer $storeTransfer): StoreResponseTransfer
     {
         $localeTransfers = $this->localeReader->getLocaleCollection(
@@ -64,11 +55,6 @@ class LocaleWriter implements LocaleWriterInterface
             ->setStore($storeTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreResponseTransfer
-     */
     public function updateStoreLocales(StoreTransfer $storeTransfer): StoreResponseTransfer
     {
         $localeTransfers = $this->localeReader->getLocaleCollection(
@@ -82,11 +68,6 @@ class LocaleWriter implements LocaleWriterInterface
         return $this->getSuccessfulResponse($storeTransfer);
     }
 
-    /**
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function createLocale(string $localeName): LocaleTransfer
     {
         $this->assertLocaleDoesNotExist($localeName);
@@ -94,21 +75,11 @@ class LocaleWriter implements LocaleWriterInterface
         return $this->localeEntityManager->createLocale($localeName);
     }
 
-    /**
-     * @param string $localeName
-     *
-     * @return void
-     */
     public function deleteLocale(string $localeName): void
     {
         $this->localeEntityManager->deleteLocale($localeName);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreResponseTransfer
-     */
     public function updateStoreDefaultLocale(StoreTransfer $storeTransfer): StoreResponseTransfer
     {
         $localeTransfer = $this->localeReader->getLocaleByName($storeTransfer->getDefaultLocaleIsoCodeOrFail());
@@ -140,11 +111,6 @@ class LocaleWriter implements LocaleWriterInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreResponseTransfer
-     */
     protected function getSuccessfulResponse(StoreTransfer $storeTransfer): StoreResponseTransfer
     {
         return (new StoreResponseTransfer())

@@ -30,9 +30,6 @@ class LanguageNegotiatorTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testGetLanguageIsoCodeThrowsExceptionIfStoreDoesNotHaveLocaleCodes(): void
     {
         //Arrange
@@ -50,9 +47,6 @@ class LanguageNegotiatorTest extends Unit
         $languageNegotiator->getLanguageIsoCode($this->tester::DE_LOCALE);
     }
 
-    /**
-     * @return void
-     */
     public function testGetLanguageIsoCodeReturnsIsoCodeByAcceptLanguageHeader(): void
     {
         //Arrange
@@ -73,9 +67,6 @@ class LanguageNegotiatorTest extends Unit
         $this->assertSame($this->tester::DE_LOCALE, $languageIsoCode);
     }
 
-    /**
-     * @return void
-     */
     public function testGetLanguageIsoCodeReturnsIsoCodeIfAcceptHeaderMatchesStoreLocales(): void
     {
         //Arrange
@@ -96,9 +87,6 @@ class LanguageNegotiatorTest extends Unit
         $this->assertSame($this->tester::DE_LOCALE, $languageIsoCode);
     }
 
-    /**
-     * @return void
-     */
     public function testGetLanguageIsoCodeReturnsDefaultStoreLocaleIsoCodeIfAcceptHeaderIsNotProvided(): void
     {
         //Arrange

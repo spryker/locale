@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\LocaleTransfer;
 
 interface LocaleReaderInterface
 {
-    /**
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function getLocaleByName(string $localeName): LocaleTransfer;
 
     /**
@@ -35,11 +30,6 @@ interface LocaleReaderInterface
      */
     public function getLocaleCollection(?LocaleCriteriaTransfer $localeCriteriaTransfer = null): array;
 
-    /**
-     * @param string $localeName
-     *
-     * @return bool
-     */
     public function localeExists(string $localeName): bool;
 
     /**

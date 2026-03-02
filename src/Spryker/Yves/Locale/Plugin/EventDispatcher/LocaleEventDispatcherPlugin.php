@@ -54,11 +54,6 @@ class LocaleEventDispatcherPlugin extends AbstractPlugin implements EventDispatc
         return $eventDispatcher;
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\Request
-     */
     protected function setRequestLocale(Request $request): Request
     {
         $locale = $request->attributes->get('_locale');
@@ -69,11 +64,6 @@ class LocaleEventDispatcherPlugin extends AbstractPlugin implements EventDispatc
         return $request;
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return string
-     */
     protected function getLocaleFromContainer(ContainerInterface $container): string
     {
         return $container->get(static::SERVICE_LOCALE);

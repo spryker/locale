@@ -30,9 +30,6 @@ use Spryker\Zed\Locale\LocaleDependencyProvider;
  */
 class LocaleBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\Locale\Business\Writer\LocaleWriterInterface
-     */
     public function createLocaleWriter(): LocaleWriterInterface
     {
         return new LocaleWriter(
@@ -41,9 +38,6 @@ class LocaleBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Business\Internal\Install\LocaleInstaller
-     */
     public function createInstaller(): LocaleInstaller
     {
         return new LocaleInstaller(
@@ -53,9 +47,6 @@ class LocaleBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return string
-     */
     public function getCurrentLocale(): string
     {
         /* Required by infrastructure, exists only for BC with DMS OFF mode. */
@@ -74,41 +65,26 @@ class LocaleBusinessFactory extends AbstractBusinessFactory
         return $this->getStoreFacade()->getCurrentStore()->getAvailableLocaleIsoCodes();
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Business\Reader\LocaleReaderInterface
-     */
     public function createLocaleReader(): LocaleReaderInterface
     {
         return new LocaleReader($this->getRepository(), $this->createLocaleCache(), $this->getStoreFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Business\Cache\LocaleCacheInterface
-     */
     public function createLocaleCache(): LocaleCacheInterface
     {
         return new LocaleCache();
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Business\Validator\LocaleValidatorInterface
-     */
     public function createLocaleValidator(): LocaleValidatorInterface
     {
         return new LocaleValidator();
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Business\Expander\StoreExpanderInterface
-     */
     public function createStoreExpander(): StoreExpanderInterface
     {
         return new StoreExpander($this->getRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Dependency\Facade\LocaleToStoreFacadeInterface
-     */
     public function getStoreFacade(): LocaleToStoreFacadeInterface
     {
         return $this->getProvidedDependency(LocaleDependencyProvider::FACADE_STORE);

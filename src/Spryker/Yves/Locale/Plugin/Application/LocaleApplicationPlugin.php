@@ -49,11 +49,6 @@ class LocaleApplicationPlugin extends AbstractPlugin implements ApplicationPlugi
         return $container;
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Spryker\Service\Container\ContainerInterface
-     */
     protected function addLocale(ContainerInterface $container): ContainerInterface
     {
         $container->set(static::BC_FEATURE_FLAG_LOCALE_LISTENER, false);
@@ -68,11 +63,6 @@ class LocaleApplicationPlugin extends AbstractPlugin implements ApplicationPlugi
         return $container;
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     protected function getLocaleTransfer(ContainerInterface $container): LocaleTransfer
     {
         return $this->getFactory()->getLocalePlugin()->getLocaleTransfer($container);

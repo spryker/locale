@@ -44,11 +44,6 @@ class LocaleLocalePlugin extends AbstractPlugin implements LocalePluginInterface
         return $this->buildLocaleTransfer($container->get(static::STORE));
     }
 
-    /**
-     * @param string|null $storeName
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     protected function buildLocaleTransfer(?string $storeName = null): LocaleTransfer
     {
         $localeTransfer = new LocaleTransfer();
@@ -57,11 +52,6 @@ class LocaleLocalePlugin extends AbstractPlugin implements LocalePluginInterface
         return $localeTransfer;
     }
 
-    /**
-     * @param string|null $storeName
-     *
-     * @return string
-     */
     protected function getLocaleName(?string $storeName = null): string
     {
         $requestUri = $this->getRequestUri();
@@ -82,9 +72,6 @@ class LocaleLocalePlugin extends AbstractPlugin implements LocalePluginInterface
         return (string)current($locales);
     }
 
-    /**
-     * @return string|null
-     */
     protected function getRequestUri(): ?string
     {
         $requestUri = Request::createFromGlobals()
@@ -93,11 +80,6 @@ class LocaleLocalePlugin extends AbstractPlugin implements LocalePluginInterface
         return $requestUri;
     }
 
-    /**
-     * @param string $requestUri
-     *
-     * @return string
-     */
     protected function extractLocaleCode(string $requestUri): string
     {
         $urlPath = (string)parse_url(trim($requestUri, '/'), PHP_URL_PATH);
@@ -110,11 +92,6 @@ class LocaleLocalePlugin extends AbstractPlugin implements LocalePluginInterface
         return $this->getLanguageByLocaleCode($pathElements[0]);
     }
 
-    /**
-     * @param string $localeCode
-     *
-     * @return string
-     */
     protected function getLanguageByLocaleCode(string $localeCode): string
     {
         $localeSegments = explode('-', $localeCode);

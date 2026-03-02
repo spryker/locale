@@ -47,25 +47,16 @@ class LocalePersistenceFactory extends AbstractPersistenceFactory
         return $this->getProvidedDependency(LocaleDependencyProvider::PROPEL_QUERY_STORE);
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Persistence\Propel\Mapper\LocaleMapper
-     */
     public function createLocaleMapper(): LocaleMapper
     {
         return new LocaleMapper();
     }
 
-    /**
-     * @return \Orm\Zed\Locale\Persistence\SpyLocale
-     */
     public function createLocaleEntity(): SpyLocale
     {
         return new SpyLocale();
     }
 
-    /**
-     * @return \Orm\Zed\Locale\Persistence\SpyLocaleStore
-     */
     public function createLocaleStoreEntity(): SpyLocaleStore
     {
         return new SpyLocaleStore();

@@ -60,9 +60,6 @@ class LocaleLocalePluginDynamicStoreTest extends Unit
      */
     protected LocaleBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -102,9 +99,6 @@ class LocaleLocalePluginDynamicStoreTest extends Unit
         $this->container->set($this->tester::SERVICE_STORE, $this->tester::DEFAULT_STORE);
     }
 
-    /**
-     * @return void
-     */
     public function testPluginReturnsDefaultLocaleByDefault(): void
     {
         // Act
@@ -114,9 +108,6 @@ class LocaleLocalePluginDynamicStoreTest extends Unit
         $this->assertSame($localeTransfer->getLocaleName(), $this->defaultLocaleName);
     }
 
-    /**
-     * @return void
-     */
     public function testPluginReturnsLocaleSpecifiedInUrlWithSlashes(): void
     {
         // Arrange
@@ -129,9 +120,6 @@ class LocaleLocalePluginDynamicStoreTest extends Unit
         $this->assertSame($localeTransfer->getLocaleName(), $this->notDefaultLocaleName);
     }
 
-    /**
-     * @return void
-     */
     public function testPluginReturnsLocaleSpecifiedInUrlWithSlashesWithQueryString(): void
     {
         // Arrange
@@ -144,9 +132,6 @@ class LocaleLocalePluginDynamicStoreTest extends Unit
         $this->assertSame($localeTransfer->getLocaleName(), $this->notDefaultLocaleName);
     }
 
-    /**
-     * @return void
-     */
     public function testPluginReturnsLocaleSpecifiedInUrlWithoutSlashes(): void
     {
         // Arrange
@@ -159,9 +144,6 @@ class LocaleLocalePluginDynamicStoreTest extends Unit
         $this->assertSame($localeTransfer->getLocaleName(), $this->notDefaultLocaleName);
     }
 
-    /**
-     * @return void
-     */
     public function testPluginReturnsLocaleSpecifiedInUrlWithoutSlashesWithQueryString(): void
     {
         // Arrange
@@ -174,9 +156,6 @@ class LocaleLocalePluginDynamicStoreTest extends Unit
         $this->assertSame($localeTransfer->getLocaleName(), $this->notDefaultLocaleName);
     }
 
-    /**
-     * @return void
-     */
     public function testPluginReturnsDefaultLocaleWhenUrlContainsNotExistingLocale(): void
     {
         // Arrange

@@ -21,10 +21,6 @@ class LocaleReader implements LocaleReaderInterface
      */
     protected LanguageReaderInterface $languageReader;
 
-    /**
-     * @param \Spryker\Client\Locale\Dependency\Client\LocaleToStoreClientInterface $storeClient
-     * @param \Spryker\Client\Locale\Reader\LanguageReaderInterface $languageReader
-     */
     public function __construct(LocaleToStoreClientInterface $storeClient, LanguageReaderInterface $languageReader)
     {
         $this->storeClient = $storeClient;

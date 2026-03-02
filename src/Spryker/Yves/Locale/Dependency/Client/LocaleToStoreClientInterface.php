@@ -11,20 +11,9 @@ use Generated\Shared\Transfer\StoreTransfer;
 
 interface LocaleToStoreClientInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getCurrentStore(): StoreTransfer;
 
-    /**
-     * @return bool
-     */
     public function isDynamicStoreEnabled(): bool;
 
-    /**
-     * @param string $storeName
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getStoreByName(string $storeName): StoreTransfer;
 }

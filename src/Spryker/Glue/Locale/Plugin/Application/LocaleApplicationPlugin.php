@@ -59,11 +59,6 @@ class LocaleApplicationPlugin extends AbstractPlugin implements ApplicationPlugi
         return $container;
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Spryker\Service\Container\ContainerInterface
-     */
     protected function addLocale(ContainerInterface $container): ContainerInterface
     {
         $container->set(static::SERVICE_LOCALE, function (ContainerInterface $container) {
@@ -98,11 +93,6 @@ class LocaleApplicationPlugin extends AbstractPlugin implements ApplicationPlugi
         $this->getFactory()->getStore()->setCurrentLocale($locale);
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return string|null
-     */
     protected function getAcceptLanguageHeader(ContainerInterface $container): ?string
     {
         if ($this->getRequestStack($container)->getCurrentRequest() === null) {
@@ -115,11 +105,6 @@ class LocaleApplicationPlugin extends AbstractPlugin implements ApplicationPlugi
             ->get(static::HEADER_ACCEPT_LANGUAGE);
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Symfony\Component\HttpFoundation\RequestStack
-     */
     protected function getRequestStack(ContainerInterface $container): RequestStack
     {
         return $container->get(static::SERVICE_REQUEST_STACK);

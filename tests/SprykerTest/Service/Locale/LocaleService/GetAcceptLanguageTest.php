@@ -28,9 +28,6 @@ class GetAcceptLanguageTest extends Unit
      */
     protected LocaleServiceInterface $localeService;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();

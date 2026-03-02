@@ -69,13 +69,6 @@ class LocaleGlueTester extends Actor
      */
     public const EXCEPTION_MESSAGE = 'Unable to get locale codes by current store.';
 
-    /**
-     * @param \Spryker\Client\Locale\LocaleClientInterface $localeClientMock
-     * @param \Spryker\Service\Locale\LocaleServiceInterface $localeServiceMock
-     * @param \Spryker\Glue\Locale\Dependency\Client\LocaleToStoreClientInterface $storeClientMock
-     *
-     * @return \Spryker\Glue\Locale\Negotiator\LanguageNegotiatorInterface
-     */
     public function createLanguageNegotiator(
         LocaleClientInterface $localeClientMock,
         LocaleServiceInterface $localeServiceMock,
@@ -84,9 +77,6 @@ class LocaleGlueTester extends Actor
         return new LanguageNegotiator($localeClientMock, $localeServiceMock, $storeClientMock);
     }
 
-    /**
-     * @return bool
-     */
     public function isDynamicStoreEnabled(): bool
     {
         return (bool)getenv('SPRYKER_DYNAMIC_STORE_MODE');

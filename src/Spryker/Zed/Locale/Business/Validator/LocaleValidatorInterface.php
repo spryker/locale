@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\StoreTransfer;
 
 interface LocaleValidatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreResponseTransfer
-     */
     public function validateStoreLocale(StoreTransfer $storeTransfer): StoreResponseTransfer;
 }

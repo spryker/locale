@@ -17,9 +17,6 @@ use Spryker\Yves\Locale\Dependency\Client\LocaleToStoreClientInterface;
  */
 class LocaleFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Shared\LocaleExtension\Dependency\Plugin\LocalePluginInterface
-     */
     public function getLocalePlugin(): LocalePluginInterface
     {
         return $this->getProvidedDependency(LocaleDependencyProvider::PLUGIN_LOCALE);
@@ -35,9 +32,6 @@ class LocaleFactory extends AbstractFactory
         return $this->getProvidedDependency(LocaleDependencyProvider::STORE);
     }
 
-    /**
-     * @return \Spryker\Yves\Locale\Dependency\Client\LocaleToStoreClientInterface
-     */
     public function getStoreClient(): LocaleToStoreClientInterface
     {
         return $this->getProvidedDependency(LocaleDependencyProvider::CLIENT_STORE);

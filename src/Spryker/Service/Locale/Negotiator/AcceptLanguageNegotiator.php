@@ -23,10 +23,6 @@ class AcceptLanguageNegotiator implements AcceptLanguageNegotiatorInterface
      */
     protected AcceptLanguageMapperInterface $acceptLanguageMapper;
 
-    /**
-     * @param \Spryker\Service\Locale\Dependency\External\LocaleToLanguageNegotiatorInterface $languageNegotiator
-     * @param \Spryker\Service\Locale\Mapper\AcceptLanguageMapperInterface $acceptLanguageMapper
-     */
     public function __construct(
         LocaleToLanguageNegotiatorInterface $languageNegotiator,
         AcceptLanguageMapperInterface $acceptLanguageMapper

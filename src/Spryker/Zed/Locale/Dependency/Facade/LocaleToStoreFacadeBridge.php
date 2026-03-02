@@ -24,19 +24,11 @@ class LocaleToStoreFacadeBridge implements LocaleToStoreFacadeInterface
         $this->storeFacade = $storeFacade;
     }
 
-    /**
-     * @return bool
-     */
     public function isDynamicStoreEnabled(): bool
     {
         return $this->storeFacade->isDynamicStoreEnabled();
     }
 
-    /**
-     * @param bool $fallbackToDefault
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getCurrentStore(bool $fallbackToDefault = false): StoreTransfer
     {
         return $this->storeFacade->getCurrentStore($fallbackToDefault);

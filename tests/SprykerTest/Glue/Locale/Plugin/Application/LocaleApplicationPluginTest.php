@@ -64,9 +64,6 @@ class LocaleApplicationPluginTest extends Unit
      */
     protected LocaleGlueTester $tester;
 
-    /**
-     * @return void
-     */
     public function testProvideShouldAddDefaultLocaleToContainerWhileEmptyAcceptHeaderLanguage(): void
     {
         // Arrange
@@ -87,9 +84,6 @@ class LocaleApplicationPluginTest extends Unit
         $this->assertSame(static::LOCALES[static::LOCALE_KEY_DE], $container->get(static::APPLICATION_LOCALE));
     }
 
-    /**
-     * @return void
-     */
     public function testProvideShouldAddLocaleToContainerWhileAcceptLanguageGotNegotiated(): void
     {
         // Arrange
@@ -109,9 +103,6 @@ class LocaleApplicationPluginTest extends Unit
         $this->assertSame(static::LOCALES[static::LOCALE_KEY_DE], $container->get(static::APPLICATION_LOCALE));
     }
 
-    /**
-     * @return void
-     */
     public function testProvideShouldAddDefaultLocaleToContainerWhileAcceptLanguageGotNotNegotiated(): void
     {
         // Arrange
@@ -132,9 +123,6 @@ class LocaleApplicationPluginTest extends Unit
         $this->assertSame(static::LOCALES[static::LOCALE_KEY_DE], $container->get(static::APPLICATION_LOCALE));
     }
 
-    /**
-     * @return void
-     */
     public function testProvideAddsLocaleToContainerForDynamicStore(): void
     {
         // Arrange
@@ -160,11 +148,6 @@ class LocaleApplicationPluginTest extends Unit
         $this->assertSame(static::LOCALES[static::LOCALE_KEY_DE], $container->get(static::APPLICATION_LOCALE));
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
-     *
-     * @return \Spryker\Service\Container\ContainerInterface
-     */
     protected function createContainer(RequestStack $requestStack): ContainerInterface
     {
         $container = $this->tester->getContainer();
@@ -173,11 +156,6 @@ class LocaleApplicationPluginTest extends Unit
         return $container;
     }
 
-    /**
-     * @param string $headerAcceptLanguage
-     *
-     * @return \Symfony\Component\HttpFoundation\RequestStack
-     */
     protected function createRequestStack(string $headerAcceptLanguage): RequestStack
     {
         $request = Request::create('/');

@@ -31,11 +31,6 @@ class LocaleInstaller implements LocaleInstallerInterface
      */
     protected $localeEntityManager;
 
-    /**
-     * @param string $localeFile
-     * @param \Spryker\Zed\Locale\Persistence\LocaleRepositoryInterface $localeRepository
-     * @param \Spryker\Zed\Locale\Persistence\LocaleEntityManagerInterface $localeEntityManager
-     */
     public function __construct(
         string $localeFile,
         LocaleRepositoryInterface $localeRepository,
@@ -46,9 +41,6 @@ class LocaleInstaller implements LocaleInstallerInterface
         $this->localeEntityManager = $localeEntityManager;
     }
 
-    /**
-     * @return void
-     */
     public function install(): void
     {
         $this->getTransactionHandler()->handleTransaction(function (): void {

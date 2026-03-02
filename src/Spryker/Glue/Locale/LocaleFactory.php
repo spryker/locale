@@ -20,9 +20,6 @@ use Spryker\Shared\Kernel\Store;
  */
 class LocaleFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Glue\Locale\Negotiator\LanguageNegotiatorInterface
-     */
     public function createLanguageNegotiator(): LanguageNegotiatorInterface
     {
         return new LanguageNegotiator(
@@ -32,17 +29,11 @@ class LocaleFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\Locale\Dependency\Client\LocaleToStoreClientInterface
-     */
     public function getStoreClient(): LocaleToStoreClientInterface
     {
         return $this->getProvidedDependency(LocaleDependencyProvider::CLIENT_STORE);
     }
 
-    /**
-     * @return \Spryker\Service\Locale\LocaleServiceInterface
-     */
     public function getLocaleService(): LocaleServiceInterface
     {
         return $this->getProvidedDependency(LocaleDependencyProvider::SERVICE_LOCALE);

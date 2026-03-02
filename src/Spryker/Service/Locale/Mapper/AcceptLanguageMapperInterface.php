@@ -12,12 +12,6 @@ use Negotiation\AcceptLanguage;
 
 interface AcceptLanguageMapperInterface
 {
-    /**
-     * @param \Negotiation\AcceptLanguage $acceptLanguage
-     * @param \Generated\Shared\Transfer\AcceptLanguageTransfer $acceptLanguageTransfer
-     *
-     * @return \Generated\Shared\Transfer\AcceptLanguageTransfer
-     */
     public function mapAcceptLanguageToAcceptLanguageTransfer(
         AcceptLanguage $acceptLanguage,
         AcceptLanguageTransfer $acceptLanguageTransfer

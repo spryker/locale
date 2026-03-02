@@ -16,17 +16,11 @@ use Spryker\Client\Locale\Reader\LocaleReaderInterface;
 
 class LocaleFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\Locale\Reader\LanguageReaderInterface
-     */
     public function createLanguageReader(): LanguageReaderInterface
     {
         return new LanguageReader();
     }
 
-    /**
-     * @return \Spryker\Client\Locale\Reader\LocaleReaderInterface
-     */
     public function createLocaleReader(): LocaleReaderInterface
     {
         return new LocaleReader(
@@ -35,17 +29,11 @@ class LocaleFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return string
-     */
     public function getLocaleCurrent(): string
     {
         return $this->getProvidedDependency(LocaleDependencyProvider::LOCALE_CURRENT);
     }
 
-    /**
-     * @return \Spryker\Client\Locale\Dependency\Client\LocaleToStoreClientInterface
-     */
     public function getStoreClient(): LocaleToStoreClientInterface
     {
         return $this->getProvidedDependency(LocaleDependencyProvider::CLIENT_STORE);

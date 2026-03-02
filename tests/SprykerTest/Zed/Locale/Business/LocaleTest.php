@@ -40,9 +40,6 @@ class LocaleTest extends Unit
      */
     protected $localeRepository;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -88,9 +85,6 @@ class LocaleTest extends Unit
         $this->assertFalse($localeAfterDelete->getIsActive());
     }
 
-    /**
-     * @return void
-     */
     public function testGetLocaleByIdReturnsValidLocaleTransfer(): void
     {
         $localeEntity = new SpyLocale();

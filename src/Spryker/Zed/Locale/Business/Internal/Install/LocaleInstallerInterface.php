@@ -9,8 +9,5 @@ namespace Spryker\Zed\Locale\Business\Internal\Install;
 
 interface LocaleInstallerInterface
 {
-    /**
-     * @return void
-     */
     public function install(): void;
 }

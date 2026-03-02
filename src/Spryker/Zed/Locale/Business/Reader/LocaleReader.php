@@ -33,11 +33,6 @@ class LocaleReader implements LocaleReaderInterface
      */
     protected LocaleToStoreFacadeInterface $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\Locale\Persistence\LocaleRepositoryInterface $localeRepository
-     * @param \Spryker\Zed\Locale\Business\Cache\LocaleCacheInterface $localeCache
-     * @param \Spryker\Zed\Locale\Dependency\Facade\LocaleToStoreFacadeInterface $storeFacade
-     */
     public function __construct(LocaleRepositoryInterface $localeRepository, LocaleCacheInterface $localeCache, LocaleToStoreFacadeInterface $storeFacade)
     {
         $this->localeRepository = $localeRepository;
@@ -121,11 +116,6 @@ class LocaleReader implements LocaleReaderInterface
         return $indexedLocaleTransfers;
     }
 
-    /**
-     * @param string $localeName
-     *
-     * @return bool
-     */
     public function localeExists(string $localeName): bool
     {
         return $this->localeRepository->getLocalesCountByLocaleName($localeName) > 0;

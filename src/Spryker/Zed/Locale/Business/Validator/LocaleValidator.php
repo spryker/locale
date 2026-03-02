@@ -23,11 +23,6 @@ class LocaleValidator implements LocaleValidatorInterface
      */
     protected const ERROR_MESSAGE_INVALID_DEFAULT_LOCALE = 'Default locale must be presented in available locales.';
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreResponseTransfer
-     */
     public function validateStoreLocale(StoreTransfer $storeTransfer): StoreResponseTransfer
     {
         $storeResponseTransfer = (new StoreResponseTransfer())->setStore($storeTransfer)

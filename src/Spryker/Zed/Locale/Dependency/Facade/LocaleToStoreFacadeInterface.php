@@ -11,15 +11,7 @@ use Generated\Shared\Transfer\StoreTransfer;
 
 interface LocaleToStoreFacadeInterface
 {
-    /**
-     * @return bool
-     */
     public function isDynamicStoreEnabled(): bool;
 
-    /**
-     * @param bool $fallbackToDefault
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getCurrentStore(bool $fallbackToDefault = false): StoreTransfer;
 }

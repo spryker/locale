@@ -24,27 +24,16 @@ class LocaleToStoreClientBridge implements LocaleToStoreClientInterface
         $this->storeClient = $storeClient;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getCurrentStore(): StoreTransfer
     {
         return $this->storeClient->getCurrentStore();
     }
 
-    /**
-     * @return bool
-     */
     public function isDynamicStoreEnabled(): bool
     {
         return $this->storeClient->isDynamicStoreEnabled();
     }
 
-    /**
-     * @param string $storeName
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getStoreByName(string $storeName): StoreTransfer
     {
         return $this->storeClient->getStoreByName($storeName);

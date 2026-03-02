@@ -39,9 +39,6 @@ class LocaleApplicationPluginTest extends Unit
      */
     protected LocaleBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -49,9 +46,6 @@ class LocaleApplicationPluginTest extends Unit
         $this->container = $this->tester->getContainer();
     }
 
-    /**
-     * @return void
-     */
     public function testProvidesLocale(): void
     {
         // Arrange
@@ -80,9 +74,6 @@ class LocaleApplicationPluginTest extends Unit
         $this->assertSame($this->container->get($this->tester::BC_FEATURE_FLAG_LOCALE_LISTENER), false);
     }
 
-    /**
-     * @return void
-     */
     public function testProvidesLocaleWhenDynamicStoreEnabled(): void
     {
         // Arrange

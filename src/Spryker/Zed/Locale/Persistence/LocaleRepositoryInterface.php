@@ -26,32 +26,12 @@ interface LocaleRepositoryInterface
      */
     public function getLocaleCollectionByCriteria(LocaleCriteriaTransfer $localeCriteriaTransfer): array;
 
-    /**
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer|null
-     */
     public function findLocaleTransferByLocaleName(string $localeName): ?LocaleTransfer;
 
-    /**
-     * @param string $localeName
-     *
-     * @return int
-     */
     public function getLocalesCountByLocaleName(string $localeName): int;
 
-    /**
-     * @param int $idLocale
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer|null
-     */
     public function findLocaleByIdLocale(int $idLocale): ?LocaleTransfer;
 
-    /**
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer|null
-     */
     public function findLocaleByLocaleName(string $localeName): ?LocaleTransfer;
 
     /**

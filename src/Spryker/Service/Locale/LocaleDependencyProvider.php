@@ -18,11 +18,6 @@ class LocaleDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const LANGUAGE_NEGOTIATOR = 'LANGUAGE_NEGOTIATOR';
 
-    /**
-     * @param \Spryker\Service\Kernel\Container $container
-     *
-     * @return \Spryker\Service\Kernel\Container
-     */
     public function provideServiceDependencies(Container $container): Container
     {
         $container = parent::provideServiceDependencies($container);
@@ -32,11 +27,6 @@ class LocaleDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Service\Kernel\Container $container
-     *
-     * @return \Spryker\Service\Kernel\Container
-     */
     public function addLanguageNegotiator(Container $container): Container
     {
         $container->set(static::LANGUAGE_NEGOTIATOR, function () {

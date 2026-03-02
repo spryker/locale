@@ -50,11 +50,6 @@ class LocaleDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     public function addLocalePlugin(Container $container): Container
     {
         $container->set(static::PLUGIN_LOCALE, function () {
@@ -64,19 +59,11 @@ class LocaleDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @return \Spryker\Shared\LocaleExtension\Dependency\Plugin\LocalePluginInterface
-     */
     public function getLocalePlugin(): LocalePluginInterface
     {
         return new LocaleLocalePlugin();
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function addStoreClient(Container $container): Container
     {
         $container->set(static::CLIENT_STORE, function (Container $container) {

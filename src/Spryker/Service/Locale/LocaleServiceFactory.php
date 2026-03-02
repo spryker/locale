@@ -16,9 +16,6 @@ use Spryker\Service\Locale\Negotiator\AcceptLanguageNegotiatorInterface;
 
 class LocaleServiceFactory extends AbstractServiceFactory
 {
-    /**
-     * @return \Spryker\Service\Locale\Negotiator\AcceptLanguageNegotiatorInterface
-     */
     public function createAcceptLanguageNegotiator(): AcceptLanguageNegotiatorInterface
     {
         return new AcceptLanguageNegotiator(
@@ -27,17 +24,11 @@ class LocaleServiceFactory extends AbstractServiceFactory
         );
     }
 
-    /**
-     * @return \Spryker\Service\Locale\Mapper\AcceptLanguageMapperInterface
-     */
     public function createAcceptLanguageMapper(): AcceptLanguageMapperInterface
     {
         return new AcceptLanguageMapper();
     }
 
-    /**
-     * @return \Spryker\Service\Locale\Dependency\External\LocaleToLanguageNegotiatorInterface
-     */
     public function getLanguageNegotiator(): LocaleToLanguageNegotiatorInterface
     {
         return $this->getProvidedDependency(LocaleDependencyProvider::LANGUAGE_NEGOTIATOR);

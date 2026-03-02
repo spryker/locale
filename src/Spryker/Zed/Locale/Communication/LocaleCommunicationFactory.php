@@ -21,17 +21,11 @@ use Spryker\Zed\Locale\LocaleDependencyProvider;
  */
 class LocaleCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Shared\LocaleExtension\Dependency\Plugin\LocalePluginInterface
-     */
     public function getLocalePlugin(): LocalePluginInterface
     {
         return $this->getProvidedDependency(LocaleDependencyProvider::PLUGIN_LOCALE);
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Dependency\Facade\LocaleToStoreFacadeInterface
-     */
     public function getStoreFacade(): LocaleToStoreFacadeInterface
     {
         return $this->getProvidedDependency(LocaleDependencyProvider::FACADE_STORE);

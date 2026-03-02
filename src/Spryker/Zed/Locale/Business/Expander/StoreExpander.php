@@ -16,9 +16,6 @@ class StoreExpander implements StoreExpanderInterface
      */
     protected LocaleRepositoryInterface $localeRepository;
 
-    /**
-     * @param \Spryker\Zed\Locale\Persistence\LocaleRepositoryInterface $localeRepository
-     */
     public function __construct(LocaleRepositoryInterface $localeRepository)
     {
         $this->localeRepository = $localeRepository;

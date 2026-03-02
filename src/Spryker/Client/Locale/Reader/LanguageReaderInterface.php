@@ -9,11 +9,6 @@ namespace Spryker\Client\Locale\Reader;
 
 interface LanguageReaderInterface
 {
-    /**
-     * @param string $localeCode
-     *
-     * @return string
-     */
     public function getLanguageByLocaleCode(string $localeCode): string;
 
     /**

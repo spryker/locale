@@ -94,9 +94,6 @@ class LocaleFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -111,17 +108,11 @@ class LocaleFacadeTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testAvailableLocalesToBeArrayType(): void
     {
         $this->assertIsArray($this->localeNames);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateStoreLocalesWithAddingNewAndRemovingOldRelations(): void
     {
         // Arrange
@@ -147,9 +138,6 @@ class LocaleFacadeTest extends Unit
         $this->assertFalse($this->tester->localeStoreExists($storeTransfer->getIdStoreOrFail(), $idLocaleFr));
     }
 
-    /**
-     * @return void
-     */
     public function testExpandStoreTransfersWithLocalesSuccessful(): void
     {
         // Arrange
@@ -169,9 +157,6 @@ class LocaleFacadeTest extends Unit
         $this->assertTrue(in_array(static::LOCALE_DE, array_values($storeTransfers[$storeTransferEu->getIdStoreOrFail()]->getAvailableLocaleIsoCodes())));
     }
 
-    /**
-     * @return void
-     */
     public function testExpandStoreTransfersWithLocalesWithoutLocaleStoreRelations(): void
     {
         // Arrange
@@ -191,9 +176,6 @@ class LocaleFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testValidateStoreLocaleSuccessful(): void
     {
         // Arrange
@@ -208,9 +190,6 @@ class LocaleFacadeTest extends Unit
         $this->assertTrue($response->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateStoreLocaleWithEmptyDefaultLocale(): void
     {
         // Arrange
@@ -228,9 +207,6 @@ class LocaleFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testValidateStoreLocaleWithInvalidDefaultLocale(): void
     {
         // Arrange
@@ -249,9 +225,6 @@ class LocaleFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateStoreDefaultLocaleSuccessful(): void
     {
         // Arrange
@@ -271,9 +244,6 @@ class LocaleFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetSupportedLocaleCodesReturnValueFromConfig(): void
     {
         // Act
@@ -283,9 +253,6 @@ class LocaleFacadeTest extends Unit
         $this->assertSame(static::BACKOFFICE_UI_LOCALES, $backofficeUILocales);
     }
 
-    /**
-     * @return void
-     */
     public function testGetLocaleCollectionGetsLocalesFromStoreInstance(): void
     {
         // Arrange

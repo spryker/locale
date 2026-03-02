@@ -20,12 +20,6 @@ class LocaleEntityManager extends AbstractEntityManager implements LocaleEntityM
 {
     use TransactionTrait;
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return void
-     */
     public function createLocaleStore(StoreTransfer $storeTransfer, LocaleTransfer $localeTransfer): void
     {
         $this->getFactory()->createLocaleStoreEntity()
@@ -47,12 +41,6 @@ class LocaleEntityManager extends AbstractEntityManager implements LocaleEntityM
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return void
-     */
     public function updateStoreDefaultLocale(StoreTransfer $storeTransfer, LocaleTransfer $localeTransfer): void
     {
         $locale = $this->getFactory()
@@ -65,11 +53,6 @@ class LocaleEntityManager extends AbstractEntityManager implements LocaleEntityM
         }
     }
 
-    /**
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function createLocale(string $localeName): LocaleTransfer
     {
         $localeEntity = $this->getFactory()->createLocaleEntity()
@@ -82,11 +65,6 @@ class LocaleEntityManager extends AbstractEntityManager implements LocaleEntityM
             ->mapLocaleEntityToLocaleTransfer($localeEntity, new LocaleTransfer());
     }
 
-    /**
-     * @param string $localeName
-     *
-     * @return void
-     */
     public function deleteLocale(string $localeName): void
     {
         $locale = $this->getFactory()

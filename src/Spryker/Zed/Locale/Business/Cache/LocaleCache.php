@@ -21,31 +21,16 @@ class LocaleCache implements LocaleCacheInterface
      */
     protected static $localeCacheById = [];
 
-    /**
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer|null
-     */
     public function findByName(string $localeName): ?LocaleTransfer
     {
         return static::$localeCache[$localeName] ?? null;
     }
 
-    /**
-     * @param int $idLocale
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer|null
-     */
     public function findById(int $idLocale): ?LocaleTransfer
     {
         return static::$localeCacheById[$idLocale] ?? null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return void
-     */
     public function set(LocaleTransfer $localeTransfer): void
     {
         static::$localeCache[$localeTransfer->getLocaleName()] = $localeTransfer;

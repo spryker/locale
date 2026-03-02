@@ -26,11 +26,6 @@ class LocaleDataHelper extends Module
      */
     public const LOCALE_NAME_LENGTH_LIMIT = 5;
 
-    /**
-     * @param array $seedData
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function haveLocale(array $seedData = []): LocaleTransfer
     {
         $localeTransfer = $this->generateLocaleTransfer($seedData);
@@ -44,12 +39,6 @@ class LocaleDataHelper extends Module
         return $this->getLocaleFacade()->createLocale($localeTransfer->getLocaleName());
     }
 
-    /**
-     * @param int $idStore
-     * @param int $idLocale
-     *
-     * @return int
-     */
     public function haveLocaleStore(int $idStore, int $idLocale): int
     {
         $localeStoreEntity = $this->createLocaleStorePropelQuery()
@@ -62,12 +51,6 @@ class LocaleDataHelper extends Module
         return $localeStoreEntity->getIdLocaleStore();
     }
 
-    /**
-     * @param int $idStore
-     * @param int $idLocale
-     *
-     * @return bool
-     */
     public function localeStoreExists(int $idStore, int $idLocale): bool
     {
         return $this->createLocaleStorePropelQuery()
@@ -76,11 +59,6 @@ class LocaleDataHelper extends Module
             ->exists();
     }
 
-    /**
-     * @param int $idStore
-     *
-     * @return void
-     */
     public function deleteLocaleStore(int $idStore): void
     {
         $this->createLocaleStorePropelQuery()
@@ -88,11 +66,6 @@ class LocaleDataHelper extends Module
             ->delete();
     }
 
-    /**
-     * @param int $idStore
-     *
-     * @return int
-     */
     public function getDefaultLocaleByIdStore(int $idStore): int
     {
         return $this->createStorePropelQuery()
@@ -100,20 +73,12 @@ class LocaleDataHelper extends Module
             ->getFkLocale();
     }
 
-    /**
-     * @return void
-     */
     public function ensureStoreLocaleDatabaseTableIsEmpty(): void
     {
         $localeStoreQuery = $this->createLocaleStorePropelQuery();
         $localeStoreQuery->deleteAll();
     }
 
-    /**
-     * @param int $idLocale
-     *
-     * @return int
-     */
     public function countLocaleStoreRelations(int $idLocale): int
     {
         return $this->createLocaleStorePropelQuery()
@@ -121,11 +86,6 @@ class LocaleDataHelper extends Module
             ->count();
     }
 
-    /**
-     * @param string $storeName
-     *
-     * @return int
-     */
     public function getDefaultLocaleIdByStoreName(string $storeName): int
     {
         return $this->createStorePropelQuery()
@@ -133,25 +93,16 @@ class LocaleDataHelper extends Module
             ->getFkLocale();
     }
 
-    /**
-     * @return \Orm\Zed\Store\Persistence\SpyStoreQuery
-     */
     protected function createStorePropelQuery(): SpyStoreQuery
     {
         return SpyStoreQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Locale\Persistence\SpyLocaleStoreQuery
-     */
     protected function createLocaleStorePropelQuery(): SpyLocaleStoreQuery
     {
         return SpyLocaleStoreQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
-     */
     protected function getLocaleFacade(): LocaleFacadeInterface
     {
         return $this->getLocator()->locale()->facade();
@@ -173,9 +124,6 @@ class LocaleDataHelper extends Module
         return $localeTransfer;
     }
 
-    /**
-     * @return void
-     */
     protected function resetLocaleCacheClass(): void
     {
         $class = new ReflectionClass(LocaleCache::class);

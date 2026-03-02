@@ -52,11 +52,6 @@ class LocaleDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected const SERVICE_LOCALE = 'locale';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = $this->addLocalePlugin($container);
@@ -66,11 +61,6 @@ class LocaleDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = $this->addStorePropelQuery($container);
@@ -78,11 +68,6 @@ class LocaleDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = $this->addCurrentLocale($container);
@@ -91,11 +76,6 @@ class LocaleDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addLocalePlugin(Container $container): Container
     {
         $container->set(static::PLUGIN_LOCALE, function (): LocalePluginInterface {
@@ -105,11 +85,6 @@ class LocaleDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addStorePropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_QUERY_STORE, $container->factory(function (): SpyStoreQuery {
@@ -119,19 +94,11 @@ class LocaleDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @return \Spryker\Shared\LocaleExtension\Dependency\Plugin\LocalePluginInterface
-     */
     protected function getLocalePlugin(): LocalePluginInterface
     {
         return new LocaleLocalePlugin();
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCurrentLocale(Container $container): Container
     {
         $container->set(static::LOCALE_CURRENT, function (Container $container) {
@@ -175,11 +142,6 @@ class LocaleDependencyProvider extends AbstractBundleDependencyProvider
         return Store::getInstance();
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addStoreFacade(Container $container): Container
     {
         $container->set(static::FACADE_STORE, function (Container $container) {
