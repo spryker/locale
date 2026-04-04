@@ -24,3 +24,5 @@ suites:
                 - \SprykerTest\Glue\Testify\Helper\FactoryHelper
                 - \SprykerTest\Glue\Testify\Helper\DependencyProviderHelper
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
