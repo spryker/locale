@@ -35,7 +35,7 @@ class StoreExpander implements StoreExpanderInterface
         }
 
         $localeNamesGroupedByIdStore = $this->localeRepository->getLocaleNamesGroupedByIdStore($storeIds);
-        $indexedLocaleNamesGroupedByIdStore = $this->indexLocaleNamesByShortName($localeNamesGroupedByIdStore);
+        $indexedLocaleNamesGroupedByIdStore = $this->indexLocaleNamesByStoreIdAndLocaleName($localeNamesGroupedByIdStore);
 
         $defaultLocaleNamesIndexedByIdStore = $this->localeRepository->getDefaultLocaleNamesIndexedByIdStore($storeIds);
 
@@ -53,13 +53,12 @@ class StoreExpander implements StoreExpanderInterface
      *
      * @return array<int, array<string, string>>
      */
-    protected function indexLocaleNamesByShortName(array $localeNamesGroupedByIdStore): array
+    protected function indexLocaleNamesByStoreIdAndLocaleName(array $localeNamesGroupedByIdStore): array
     {
         $indexedLocaleNamesGroupedByIdStore = [];
         foreach ($localeNamesGroupedByIdStore as $idStore => $localeNames) {
             foreach ($localeNames as $localeName) {
-                [$locale, $region] = explode('_', $localeName);
-                $indexedLocaleNamesGroupedByIdStore[$idStore][$locale] = $localeName;
+                $indexedLocaleNamesGroupedByIdStore[$idStore][$localeName] = $localeName;
             }
         }
 
