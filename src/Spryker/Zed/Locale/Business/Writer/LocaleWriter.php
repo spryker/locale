@@ -38,6 +38,7 @@ class LocaleWriter implements LocaleWriterInterface
 
     public function createLocaleStore(StoreTransfer $storeTransfer): StoreResponseTransfer
     {
+        $this->localeReader->clearMemoryCache();
         $localeTransfers = $this->localeReader->getLocaleCollection(
             (new LocaleCriteriaTransfer())
                 ->setLocaleConditions((new LocaleConditionsTransfer())
@@ -57,6 +58,7 @@ class LocaleWriter implements LocaleWriterInterface
 
     public function updateStoreLocales(StoreTransfer $storeTransfer): StoreResponseTransfer
     {
+        $this->localeReader->clearMemoryCache();
         $localeTransfers = $this->localeReader->getLocaleCollection(
             (new LocaleCriteriaTransfer())
                 ->setLocaleConditions((new LocaleConditionsTransfer())
@@ -70,6 +72,7 @@ class LocaleWriter implements LocaleWriterInterface
 
     public function createLocale(string $localeName): LocaleTransfer
     {
+        $this->localeReader->clearMemoryCache();
         $this->assertLocaleDoesNotExist($localeName);
 
         return $this->localeEntityManager->createLocale($localeName);
@@ -77,11 +80,13 @@ class LocaleWriter implements LocaleWriterInterface
 
     public function deleteLocale(string $localeName): void
     {
+        $this->localeReader->clearMemoryCache();
         $this->localeEntityManager->deleteLocale($localeName);
     }
 
     public function updateStoreDefaultLocale(StoreTransfer $storeTransfer): StoreResponseTransfer
     {
+        $this->localeReader->clearMemoryCache();
         $localeTransfer = $this->localeReader->getLocaleByName($storeTransfer->getDefaultLocaleIsoCodeOrFail());
 
         $this->localeEntityManager->updateStoreDefaultLocale(

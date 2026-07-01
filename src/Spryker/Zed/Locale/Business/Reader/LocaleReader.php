@@ -19,6 +19,11 @@ use Spryker\Zed\Locale\Persistence\LocaleRepositoryInterface;
 class LocaleReader implements LocaleReaderInterface
 {
     /**
+     * @var array<string, mixed>
+     */
+    protected static array $memoryCache = [];
+
+    /**
      * @var \Spryker\Zed\Locale\Persistence\LocaleRepositoryInterface
      */
     protected $localeRepository;
@@ -134,6 +139,11 @@ class LocaleReader implements LocaleReaderInterface
         return $locales;
     }
 
+    public function clearMemoryCache(): void
+    {
+        static::$memoryCache = [];
+    }
+
     /**
      * @param \Generated\Shared\Transfer\LocaleCriteriaTransfer|null $localeCriteriaTransfer
      *
@@ -156,6 +166,14 @@ class LocaleReader implements LocaleReaderInterface
                 );
         }
 
-        return $this->localeRepository->getLocaleCollectionByCriteria($localeCriteriaTransfer);
+        $cacheKey = md5(serialize($localeCriteriaTransfer->toArray()));
+
+        if (!isset(static::$memoryCache[$cacheKey])) {
+            $localeTransfers = $this->localeRepository->getLocaleCollectionByCriteria($localeCriteriaTransfer);
+
+            static::$memoryCache[$cacheKey] = $localeTransfers;
+        }
+
+        return static::$memoryCache[$cacheKey];
     }
 }

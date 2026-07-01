@@ -36,4 +36,6 @@ interface LocaleReaderInterface
      * @return array<string>
      */
     public function getAvailableLocales(): array;
+
+    public function clearMemoryCache(): void;
 }

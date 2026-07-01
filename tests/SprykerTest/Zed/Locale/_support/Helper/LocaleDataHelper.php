@@ -8,18 +8,28 @@
 namespace SprykerTest\Zed\Locale\Helper;
 
 use Codeception\Module;
+use Codeception\TestInterface;
 use Generated\Shared\DataBuilder\LocaleBuilder;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Orm\Zed\Locale\Persistence\SpyLocaleStoreQuery;
 use Orm\Zed\Store\Persistence\SpyStoreQuery;
 use ReflectionClass;
+use ReflectionProperty;
 use Spryker\Zed\Locale\Business\Cache\LocaleCache;
 use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
+use Spryker\Zed\Locale\Business\Reader\LocaleReader;
 use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
 
 class LocaleDataHelper extends Module
 {
     use LocatorHelperTrait;
+
+    public function _before(TestInterface $test)
+    {
+        parent::_before($test);
+
+        $this->resetLocaleCacheClass();
+    }
 
     /**
      * @var int
@@ -134,5 +144,9 @@ class LocaleDataHelper extends Module
         $localeCacheById = $class->getProperty('localeCacheById');
         $localeCacheById->setAccessible(true);
         $localeCacheById->setValue([]);
+
+        $reflectionProperty = new ReflectionProperty(LocaleReader::class, 'memoryCache');
+        $reflectionProperty->setAccessible(true);
+        ($reflectionProperty)->setValue(null, []);
     }
 }
