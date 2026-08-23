@@ -138,15 +138,12 @@ class LocaleDataHelper extends Module
     {
         $class = new ReflectionClass(LocaleCache::class);
         $localeCache = $class->getProperty('localeCache');
-        $localeCache->setAccessible(true);
         $localeCache->setValue([]);
 
         $localeCacheById = $class->getProperty('localeCacheById');
-        $localeCacheById->setAccessible(true);
         $localeCacheById->setValue([]);
 
         $reflectionProperty = new ReflectionProperty(LocaleReader::class, 'memoryCache');
-        $reflectionProperty->setAccessible(true);
         ($reflectionProperty)->setValue(null, []);
     }
 }
