@@ -16,6 +16,8 @@ use Spryker\Zed\Locale\Business\Expander\StoreExpanderInterface;
 use Spryker\Zed\Locale\Business\Internal\Install\LocaleInstaller;
 use Spryker\Zed\Locale\Business\Reader\LocaleReader;
 use Spryker\Zed\Locale\Business\Reader\LocaleReaderInterface;
+use Spryker\Zed\Locale\Business\Validator\CustomerLocaleValidator;
+use Spryker\Zed\Locale\Business\Validator\CustomerLocaleValidatorInterface;
 use Spryker\Zed\Locale\Business\Validator\LocaleValidator;
 use Spryker\Zed\Locale\Business\Validator\LocaleValidatorInterface;
 use Spryker\Zed\Locale\Business\Writer\LocaleWriter;
@@ -30,6 +32,11 @@ use Spryker\Zed\Locale\LocaleDependencyProvider;
  */
 class LocaleBusinessFactory extends AbstractBusinessFactory
 {
+    public function createCustomerLocaleValidator(): CustomerLocaleValidatorInterface
+    {
+        return new CustomerLocaleValidator($this->getRepository());
+    }
+
     public function createLocaleWriter(): LocaleWriterInterface
     {
         return new LocaleWriter(
