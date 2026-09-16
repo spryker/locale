@@ -1,0 +1,5 @@
+"At least one locale ISO code is required","Mindestens ein Gebietsschema-ISO-Code ist erforderlich"
+"Available locale ISO codes must be an array","Verfügbare Gebietsschema-ISO-Codes müssen ein Array sein"
+"Invalid locale ISO code format","Ungültiges Format des Gebietsschema-ISO-Codes"
+"Locale code must be in format of two lowercase letters underscore two uppercase letters (e.g., en_US, de_DE)","Der Gebietsschemacode muss aus zwei Kleinbuchstaben, einem Unterstrich und zwei Großbuchstaben bestehen (z. B. en_US, de_DE)"
+"Each locale code must be in format of two lowercase letters underscore two uppercase letters (e.g., en_US, de_DE)","Jeder Gebietsschemacode muss aus zwei Kleinbuchstaben, einem Unterstrich und zwei Großbuchstaben bestehen (z. B. en_US, de_DE)"

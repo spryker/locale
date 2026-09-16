@@ -1,0 +1,5 @@
+"At least one locale ISO code is required","At least one locale ISO code is required"
+"Available locale ISO codes must be an array","Available locale ISO codes must be an array"
+"Invalid locale ISO code format","Invalid locale ISO code format"
+"Locale code must be in format of two lowercase letters underscore two uppercase letters (e.g., en_US, de_DE)","Locale code must be in format of two lowercase letters underscore two uppercase letters (e.g., en_US, de_DE)"
+"Each locale code must be in format of two lowercase letters underscore two uppercase letters (e.g., en_US, de_DE)","Each locale code must be in format of two lowercase letters underscore two uppercase letters (e.g., en_US, de_DE)"
