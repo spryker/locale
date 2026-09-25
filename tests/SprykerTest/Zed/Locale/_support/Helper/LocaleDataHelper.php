@@ -36,6 +36,15 @@ class LocaleDataHelper extends Module
      */
     public const LOCALE_NAME_LENGTH_LIMIT = 5;
 
+    /**
+     * The locale a request without an explicit one resolves to, and therefore the only locale a
+     * fixture has to be written for.
+     */
+    public function getCurrentLocale(): LocaleTransfer
+    {
+        return $this->getLocaleFacade()->getCurrentLocale();
+    }
+
     public function haveLocale(array $seedData = []): LocaleTransfer
     {
         $localeTransfer = $this->generateLocaleTransfer($seedData);
