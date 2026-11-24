@@ -155,7 +155,10 @@ class LocaleReader implements LocaleReaderInterface
         if (!$this->storeFacade->isDynamicStoreEnabled()) {
             $availableLocales = Store::getInstance()->getLocales();
 
-            return $this->localeRepository->getLocaleTransfersByLocaleNames($availableLocales);
+            return $this->sortLocaleTransfersByLocaleNames(
+                $this->localeRepository->getLocaleTransfersByLocaleNames($availableLocales),
+                $availableLocales,
+            );
         }
 
         if (!$localeCriteriaTransfer) {
@@ -175,5 +178,23 @@ class LocaleReader implements LocaleReaderInterface
         }
 
         return static::$memoryCache[$cacheKey];
+    }
+
+    /**
+     * @param array<\Generated\Shared\Transfer\LocaleTransfer> $localeTransfers
+     * @param array<string> $localeNames
+     *
+     * @return array<\Generated\Shared\Transfer\LocaleTransfer>
+     */
+    protected function sortLocaleTransfersByLocaleNames(array $localeTransfers, array $localeNames): array
+    {
+        $localeNamePositions = array_flip(array_values($localeNames));
+
+        usort(
+            $localeTransfers,
+            fn (LocaleTransfer $left, LocaleTransfer $right): int => $localeNamePositions[$left->getLocaleNameOrFail()] <=> $localeNamePositions[$right->getLocaleNameOrFail()],
+        );
+
+        return $localeTransfers;
     }
 }

@@ -7,10 +7,12 @@
 
 namespace Spryker\Zed\Locale\Persistence;
 
+use Generated\Shared\Transfer\LocaleConditionsTransfer;
 use Generated\Shared\Transfer\LocaleCriteriaTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Orm\Zed\Locale\Persistence\Map\SpyLocaleStoreTableMap;
 use Orm\Zed\Locale\Persistence\Map\SpyLocaleTableMap;
+use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
 use Orm\Zed\Store\Persistence\Map\SpyStoreTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\Collection;
@@ -67,9 +69,18 @@ class LocaleRepository extends AbstractRepository implements LocaleRepositoryInt
             $localeQuery->filterByIsActive(true);
         }
 
-        $localeEntites = $localeQuery->find();
+        $localeEntites = $this->applyLocaleSorting($localeQuery, $localeConditionTransfer)->find();
 
         return $this->mapLocaleEntitiesToLocaleTransfers($localeEntites);
+    }
+
+    protected function applyLocaleSorting(SpyLocaleQuery $localeQuery, ?LocaleConditionsTransfer $localeConditionsTransfer): SpyLocaleQuery
+    {
+        if ($localeConditionsTransfer && ($localeConditionsTransfer->getAssignedToStore() || $localeConditionsTransfer->getStoreNames())) {
+            $localeQuery->orderBy(SpyLocaleStoreTableMap::COL_ID_LOCALE_STORE);
+        }
+
+        return $localeQuery->orderBy(SpyLocaleTableMap::COL_ID_LOCALE);
     }
 
     public function findLocaleTransferByLocaleName(string $localeName): ?LocaleTransfer

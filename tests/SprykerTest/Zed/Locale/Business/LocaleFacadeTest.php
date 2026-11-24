@@ -12,6 +12,7 @@ use Generated\Shared\Transfer\LocaleConditionsTransfer;
 use Generated\Shared\Transfer\LocaleCriteriaTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Locale\Business\LocaleFacade;
 
 /**
@@ -269,5 +270,59 @@ class LocaleFacadeTest extends Unit
             $this->assertSame($localeName, $localeTransfer->getLocaleNameOrFail());
             $this->assertContains($localeTransfer->getLocaleNameOrFail(), $availableLocales);
         }
+    }
+
+    public function testGetLocaleCollectionReturnsStoreLocalesInAssignmentOrder(): void
+    {
+        if (!$this->tester->isDynamicStoreEnabled()) {
+            $this->markTestSkipped('Locale-store relations are only read from the database in dynamic store mode.');
+        }
+
+        // Arrange
+        $storeTransfer = $this->tester->haveStore([StoreTransfer::NAME => sprintf('LOCALE_ORDER_%s', uniqid())]);
+        $expectedLocaleNames = $this->assignLocalesInDescendingIdOrder($storeTransfer, [static::LOCALE_DE, static::LOCALE_EN]);
+
+        // Act
+        $localeTransfers = $this->localeFacade->getLocaleCollection(
+            (new LocaleCriteriaTransfer())->setLocaleConditions(
+                (new LocaleConditionsTransfer())->setStoreNames([$storeTransfer->getNameOrFail()]),
+            ),
+        );
+
+        // Assert
+        $this->assertSame($expectedLocaleNames, array_keys($localeTransfers));
+    }
+
+    public function testGetLocaleCollectionReturnsLocalesInStoreConfigurationOrderWhenDynamicStoreIsDisabled(): void
+    {
+        if ($this->tester->isDynamicStoreEnabled()) {
+            $this->markTestSkipped('Store locales are only read from the store configuration when dynamic store is disabled.');
+        }
+
+        // Arrange
+        $expectedLocaleNames = array_values(Store::getInstance()->getLocales());
+
+        // Act
+        $localeTransfers = $this->localeFacade->getLocaleCollection();
+
+        // Assert
+        $this->assertSame($expectedLocaleNames, array_keys($localeTransfers));
+    }
+
+    /**
+     * @param array<string> $localeNames
+     *
+     * @return array<string>
+     */
+    protected function assignLocalesInDescendingIdOrder(StoreTransfer $storeTransfer, array $localeNames): array
+    {
+        $localeTransfers = array_map(fn (string $localeName): LocaleTransfer => $this->localeFacade->getLocale($localeName), $localeNames);
+        usort($localeTransfers, fn (LocaleTransfer $left, LocaleTransfer $right): int => $right->getIdLocaleOrFail() <=> $left->getIdLocaleOrFail());
+
+        foreach ($localeTransfers as $localeTransfer) {
+            $this->tester->haveLocaleStore($storeTransfer->getIdStoreOrFail(), $localeTransfer->getIdLocaleOrFail());
+        }
+
+        return array_map(fn (LocaleTransfer $localeTransfer): string => $localeTransfer->getLocaleNameOrFail(), $localeTransfers);
     }
 }
